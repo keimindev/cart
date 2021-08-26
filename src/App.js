@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import CartContainer from './CartContainer'
+import { useGlobalContext} from './AppProvider'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faShoppingBag } from "@fortawesome/free-solid-svg-icons";
+
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const { loading, amount } = useGlobalContext();
+    return (
+    <>
+    <nav className="nav">
+        <div><h2>UseReducer</h2></div>
+        <div>
+            <p className="icon"><FontAwesomeIcon icon={faShoppingBag} /></p>
+            <div className="amount-container">{amount}
+            </div>
+        </div>
+     </nav>
+     <CartContainer />
+      </>
+    )
 }
 
-export default App;
+export default App
